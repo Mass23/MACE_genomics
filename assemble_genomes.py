@@ -56,7 +56,7 @@ def AssembleFlye(out_folder, assembly_path, nanopore_raw_reads, cpus):
     log.write(args + '\n\n')
 
 def AssembleCanu(out_folder, assembly_path, nanopore_raw_reads, cpus):
-  args = f'canu -p canu_assembly -d {assembly_path} genomeSize=5m correctedErrorRate=0.105 maxThreads={str(cpus)} -nanopore {nanopore_raw_reads}'
+  args = f'canu -p canu_assembly -d {assembly_path} genomeSize=5m useGrid=false correctedErrorRate=0.105 maxThreads={str(cpus)} -nanopore {nanopore_raw_reads}'
   subprocess.call(args, shell = True)
 
   with open(f'{out_folder}/log.txt', 'a') as log:
